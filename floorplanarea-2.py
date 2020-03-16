@@ -27,7 +27,7 @@ class RoomAreaView(ui.View):
 	''' top level container, consisting of an imageview and an overlay	.  
 	ideally this might also contain a menu bar, for changing the mode - for instance you might have a button for enabling room drawing, another one for editing points, another for zoom/pan'''
 	def scrollview_should_scroll(self,sv):
-		return false
+		return False
 	def __init__(self,file):
 		#create image view that fills this top level view.
 		#  since this RoomAreaView is the one that gets presented, it will be resized automatically, so we want the imageview to stay tied to the full view size, so we use flex.  Also, the content mode is important to prevent the image from being squished
@@ -71,7 +71,7 @@ class RoomAreaView(ui.View):
 		'''upon close, dump out the current area.  do this by first getting the set of points.  The zip notation lets us convert from a tuple of the form ((x0,y0),(x1,y1),...) to x=(x0,x1,...) and y=(y0,y1,...)'''
 		if self.pts:
 			x,y=zip(*self.rv.pts)
-			print (polygonArea(x,y,float(self.rv.scale.text)))
+			print(polygonArea(x,y,float(self.rv.scale.text)))
 class RoomAreaOverlay(ui.View):
 	'''A touch sensitive overlay.  Touches add to a list of points, which are then used to compute area.  Lengths are shown for each line segment, snd a scaling parameter is used to adjust the length of drawn lines to known dimensions'''
 	def __init__(self,*args,**kwargs):
